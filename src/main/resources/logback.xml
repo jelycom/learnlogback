@@ -9,7 +9,7 @@
     <!-- logback为java中的包 -->
     <logger name="logback"/>
     <!--logback.LogbackDemo：类的全路径 -->
-    <logger name="logback.LogbackDemo" level="INFO" additivity="true">
+    <logger name="logback" level="INFO" additivity="true">
         <appender-ref ref="STDOUT"/>
     </logger>
 
