@@ -9,17 +9,16 @@
     <!-- logback为java中的包 -->
     <logger name="logback"/>
     <!--logback.LogbackDemo：类的全路径 -->
-    <logger name="logback.LogbackDemo" level="INFO" additivity="false">
+    <logger name="logback.LogbackDemo" level="INFO" additivity="true">
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <root level="ERROR">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>
-<!--  当执行logback.LogbackDemo类的main方法时，先执行<logger name="logback.LogbackDemo" level="INFO" additivity="false">，
-将级别为“INFO”及大于“INFO”的日志信息交给此loger指定的名为“STDOUT”的appender处理，在控制台中打出日志，
-不再向次loger的上级 <logger name="logback"/> 传递打印信息；
-<logger name="logback"/>未接到任何打印信息，当然也不会给它的上级root传递任何打印信息；
-尝试修改root的level为ERROR 和DEBUG等级别,不影响输出,因为银镜被logback.LogbackDemo处理,而且不向上级传递.
+<!--
+additivity="false" 改为  additivity="true"
+日志打印了两次，想必大家都知道原因了，因为打印信息向上级传递，logger本身打印一次，root接到后又打印一次
+尝试修改root的level为ERROR 和DEBUG等级别,不影响输出,因为被logback.LogbackDemo处理后传递给上级,上级只负责用appender输出,忽略了root的level?.
 -->
 </configuration>
